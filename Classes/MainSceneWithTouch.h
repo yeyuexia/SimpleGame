@@ -12,9 +12,9 @@
 #include <iostream>
 
 #include "cocos2d.h"
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 
-class HelloWorldWithTouch: public HelloWorld
+class MainSceneWithTouch: public MainScene
 {
 public:
     virtual bool init();
@@ -23,7 +23,7 @@ public:
         
     void onTouchesMoved(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event *pEvent);
     // implement the "static node()" method manually
-    CREATE_FUNC(HelloWorldWithTouch);
+    CREATE_FUNC(MainSceneWithTouch);
 };
 
 #endif /* defined(__Test__HelloWorldWithTouch__) */

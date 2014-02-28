@@ -1,38 +1,38 @@
 //
-//  HelloWorldWithAccelector.cpp
+//  MainSceneWithAccelector.cpp
 //  Test
 //
 //  Created by yeyuexia on 2/16/14.
 //
 //
 
-#include "HelloWorldWithAccelector.h"
+#include "MainSceneWithAccelector.h"
 USING_NS_CC;
 
-Scene* HelloWorldWithAccelector::scene()
+Scene* MainSceneWithAccelector::scene()
 {
     Scene* scene = NULL;
     do
     {
         scene = Scene::create();
         CC_BREAK_IF(!scene);
-        HelloWorldWithAccelector* layer = HelloWorldWithAccelector::create();
+        MainSceneWithAccelector* layer = MainSceneWithAccelector::create();
         CC_BREAK_IF(!layer);
         scene->addChild(layer);
     } while (0);
     return scene;
 }
 
-bool HelloWorldWithAccelector::init()
+bool MainSceneWithAccelector::init()
 {
-    if (!HelloWorld::init())
+    if (!MainScene::init())
         return false;
-    this->schedule(schedule_selector(HelloWorldWithAccelector::updateGame));
+    this->schedule(schedule_selector(MainSceneWithAccelector::updateGame));
     this->setAccelerometerEnabled(true);
     return true;
 }
 
-void HelloWorldWithAccelector::onAccelerate(Acceleration *pAccelerationValue)
+void MainSceneWithAccelector::onAccelerate(Acceleration *pAccelerationValue)
 {
     getRabbit()->setSpeedX(pAccelerationValue->x * 0.5);
 }

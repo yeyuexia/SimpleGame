@@ -5,7 +5,7 @@
 #include "ScoreBoard.h"
 #include "Rabbit.h"
 
-class HelloWorld : public cocos2d::LayerColor
+class MainScene : public cocos2d::LayerColor
 {
 private:
     Rabbit* _pRabbit;
@@ -27,9 +27,9 @@ private:
     
 public:
     // Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
-    HelloWorld();
+    MainScene();
     
-    ~HelloWorld();
+    virtual ~MainScene();
     
     virtual bool init();
 
@@ -47,7 +47,7 @@ public:
     
     void onTouchesEnded(const std::vector<cocos2d::Touch*>& touches, cocos2d::Event* pEvent);
     // implement the "static node()" method manually
-    CREATE_FUNC(HelloWorld);
+    CREATE_FUNC(MainScene);
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -1,14 +1,14 @@
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 #include "SimpleAudioEngine.h"
 
 USING_NS_CC;
 
-HelloWorld::HelloWorld()
+MainScene::MainScene()
 : _pRabbit(NULL)
 {
 }
 
-HelloWorld::~HelloWorld()
+MainScene::~MainScene()
 {
     if (_pRabbit)
     {
@@ -18,19 +18,19 @@ HelloWorld::~HelloWorld()
     
 }
 
-Scene* HelloWorld::scene() {
+Scene* MainScene::scene() {
     // 'scene' is an autorelease object
     Scene* scene = NULL;
     do {
         scene = Scene::create();
         CC_BREAK_IF(!scene);
-        HelloWorld* layer = HelloWorld::create();
+        MainScene* layer = MainScene::create();
         CC_BREAK_IF(!layer);
         scene->addChild(layer);
     } while (0);
-    CCLOG("create  HelloWorld");
+    CCLOG("create  MainScene");
     // 'layer' is an autorelease object
-//    HelloWorld *layer = HelloWorld::create();
+//    MainScene *layer = MainScene::create();
 //
 //    // add layer as a child to scene
 //    scene->addChild(layer);
@@ -40,7 +40,7 @@ Scene* HelloWorld::scene() {
 }
 
 // on "init" you need to initialize your instance
-bool HelloWorld::init() {
+bool MainScene::init() {
     bool bRet = false;
     do {
         CC_BREAK_IF(!LayerColor::initWithColor( Color4B(0, 0, 0, 0)));
@@ -56,14 +56,14 @@ bool HelloWorld::init() {
     return bRet;
 }
 
-void HelloWorld::updateGame(float dt)
+void MainScene::updateGame(float dt)
 {
     renderRabbit();
     renderBells();
 //    CCLOG("height:%d", ScoreBoard::getHeight());
 }
 
-void HelloWorld::renderRabbit()
+void MainScene::renderRabbit()
 {
     Point position = _pRabbit->getPosition();
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -101,7 +101,7 @@ void HelloWorld::renderRabbit()
     }
 }
 
-void HelloWorld::menuCloseCallback(Object* pSender)
+void MainScene::menuCloseCallback(Object* pSender)
 {
 //#if (CC_TARGET_PLATFORM == CC_PLATFORM_WINRT) || (CC_TARGET_PLATFORM == CC_PLATFORM_WP8)
 //	CCMessageBox("You pressed the close button. Windows Store Apps do not implement a close button.","Alert");
@@ -114,12 +114,12 @@ void HelloWorld::menuCloseCallback(Object* pSender)
     Director::getInstance()->end();
 }
 
-void HelloWorld::startGameCallback(Object* pSender)
+void MainScene::startGameCallback(Object* pSender)
 {
     
 }
 
-void HelloWorld::onTouchesEnded(const std::vector<Touch*>& touches, cocos2d::Event* pEvent) {
+void MainScene::onTouchesEnded(const std::vector<Touch*>& touches, cocos2d::Event* pEvent) {
     CCLOG("jump");
     if (_pRabbit->isInBottom())
     {
@@ -129,7 +129,7 @@ void HelloWorld::onTouchesEnded(const std::vector<Touch*>& touches, cocos2d::Eve
 
 
 //////////////////////////////////////// bell //////////////////////////////////////////////
-void HelloWorld::renderBells()
+void MainScene::renderBells()
 {
     double speed = getBellSpeed();
     double time = Director::getInstance()->getSecondsPerFrame();
@@ -142,7 +142,7 @@ void HelloWorld::renderBells()
     deleteBells();
 }
 
-double HelloWorld::getBellSpeed()
+double MainScene::getBellSpeed()
 {
     double middleOfScreen = Director::getInstance()->getVisibleSize().height * 0.5;
     //    CCLOG("height:%d, visible height:%d", ScoreBoard::getHeight(), int(_visibleSize.height) >> 1);
@@ -153,7 +153,7 @@ double HelloWorld::getBellSpeed()
     }
 }
 
-void HelloWorld::generateBells()
+void MainScene::generateBells()
 {
     LabelTTF* bell = NULL;
     Size visibleSize = Director::getInstance()->getVisibleSize();
@@ -192,7 +192,7 @@ void HelloWorld::generateBells()
     }
 }
 
-void HelloWorld::deleteBells()
+void MainScene::deleteBells()
 {
     LabelTTF* bell = NULL;
     Vector<Object*> prepareEarseBells;
@@ -219,7 +219,7 @@ void HelloWorld::deleteBells()
     }
 }
 
-bool HelloWorld::isCollidedBell(const cocos2d::Rect &rect) {
+bool MainScene::isCollidedBell(const cocos2d::Rect &rect) {
     Object* prepareEarseBell = NULL;
     for (auto it : _bells) {
         auto bell = dynamic_cast<LabelTTF*>(it);

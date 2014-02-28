@@ -11,9 +11,9 @@
 
 #include <iostream>
 
-#include "HelloWorldScene.h"
+#include "MainScene.h"
 
-class HelloWorldWithAccelector: public HelloWorld
+class MainSceneWithAccelector: public MainScene
 {
 public:
     virtual bool init();
@@ -23,7 +23,7 @@ public:
     void onAccelerate(cocos2d::Acceleration *pAccelerationValue);
     
     // implement the "static node()" method manually
-    CREATE_FUNC(HelloWorldWithAccelector);
+    CREATE_FUNC(MainSceneWithAccelector);
 };
 
 #endif /* defined(__Test__HelloWorldWithAccelector__) */
